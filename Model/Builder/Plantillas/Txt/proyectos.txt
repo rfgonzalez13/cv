@@ -1,0 +1,8 @@
+--------------------------------------------------------------------------
+
+Título do proxecto: {{TituloProy}}
+Entidade financeira: {{EntidadFinanciadora}}     
+Entidades participantes:     
+Duración: dende: {{AnhoInicioProy}}     		ata: {{AnhoFinProy}}   
+Investigador/a principal: {{NombreU}} {{ApellidosU}}   
+Número de investigadores/as participantes: {{NumeroU}}

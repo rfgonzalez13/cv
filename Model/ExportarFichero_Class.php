@@ -41,12 +41,30 @@ class ExportarFicheroCurriculum{
     }
 
     function buildCv(){
+        
         $this->builder->crearEstructura();
         $result = $this->mysqli->query("SELECT NombreU, ApellidosU, TituloAcademicoU, TipoContratoU, CentroU, DepartamentoU, UniversidadU, TipoU from usuario WHERE loginU = '". $this->login ."'");
-        if($result->num_rows == 1){
+        if($result){
             $this->builder->datosPersonales($result);
+            $result->free();
         }
-        //resto de funciones
+        $anhof = date("Y", strtotime($this->fechaf));
+        $anhoi = date("Y", strtotime($this->fechai));
+        $result = $this->mysqli->query("SELECT p.TituloProy, p.EntidadFinanciadora, p.AnhoInicioProy, p.AnhoFinProy, 
+        (SELECT COUNT(1) AS Conteo FROM usuario_proyecto u WHERE u.CodigoProy = p.CodigoProy ) AS Conteo, us.NombreU, us.ApellidosU 
+        FROM proyecto p, usuario_proyecto u, usuario us WHERE u.CodigoProy = p.CodigoProy 
+        AND p.AnhoFinProy BETWEEN " .$anhoi. " AND " .$anhof. " AND us.loginU =(SELECT LoginU FROM usuario_proyecto x 
+        WHERE x.TipoParticipacionProy = 'Investigador Principal' AND x.CodigoProy = p.CodigoProy LIMIT 1) AND u.loginU = '". $this->login ."'");
+        $log = $this->mysqli->error;
+        echo $log;
+        if($result){
+            if($result->num_rows > 1){    
+                $this->builder->proyectos($result);
+            }
+            $result->free();
+        
+        }
+        
         $this->builder->getCurriculum();
     }
 

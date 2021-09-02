@@ -47,7 +47,23 @@ class TxtBuilder implements iBuilder{
 
     function proyectos($result)
     {
-        
+        //CodigoProy, TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy, AnhoFinProy, Importe 
+        $reemplazo = array('{{TituloProy}}', '{{EntidadFinanciadora}}', '{{AnhoInicioProy}}', 
+        '{{AnhoFinProy}}', '{{NumeroU}}','{{NombreU}}', '{{ApellidosU}}');
+        //Concatenar Título
+        $str=file_get_contents(getcwd() . $this->path . 'proyectoscab.txt');
+        fwrite($this->archivo, $str);
+        //for each en result
+        $fila = $result->fetch_array(MYSQLI_ASSOC);
+        while($fila != null){
+            //Leer la plantilla
+            $str=file_get_contents(getcwd() . $this->path . 'proyectos.txt');
+            //remplazar
+            $str=str_replace($reemplazo, $fila,$str);
+            //Concatenar
+            fwrite($this->archivo, $str);
+            $fila = $result->fetch_array(MYSQLI_ASSOC);
+        } 
     }
     function publicaciones($result)
     {

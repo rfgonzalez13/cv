@@ -1,9 +1,14 @@
-DATOS PERSONALES
 
-Apellidos: {{ApellidosU}}   | Nombre: {{NombreU}}
-Sexo:  |   Fecha de Nacimiento:  | NIF:
 
-DATOS PROFESIONALES
+
+
+DATOS PERSOAIS
+--------------------------------------------------------------------------
+
+Apelidos: {{ApellidosU}}   | Nome: {{NombreU}}
+Sexo:  |   Fecha de Nacemiento:  | NIF:
+
+DATOS PROFESIONAIS
 
 Organismo: {{UniversidadU}}
 Centro: {{CentroU}}
@@ -11,5 +16,3 @@ Departamento: {{DepartamentoU}}
 Direccion: 
 Situación Laboral: {{TipoContratoU}}
 Categoria Profesional {{TituloAcademicoU}}
-
---------------------------------------------------------------------------

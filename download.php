@@ -18,7 +18,6 @@
     flush();
     readfile($filename);
 
-    unlink($filename);
     
     exit;
 

@@ -19,8 +19,8 @@ class TxtBuilder implements iBuilder{
     {
         //NombreU, ApellidosU, TituloAcademicoU, TipoContratoU, CentroU, DepartamentoU, UniversidadU, TipoU
         $reemplazo =  array( "NombreU" => "{{NombreU}}",
-            "TituloAcademicoU" => "{{TituloAcademicoU}}",
             "ApellidosU" => "{{ApellidosU}}",
+            "TituloAcademicoU" => "{{TituloAcademicoU}}",
             "TipoContratoU" => "{{TipoContratoU}}",
             "CentroU" => "{{CentroU}}",
             "DepartamentoU" => "{{DepartamentoU}}",

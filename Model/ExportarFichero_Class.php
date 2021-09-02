@@ -51,10 +51,11 @@ class ExportarFicheroCurriculum{
         $anhof = date("Y", strtotime($this->fechaf));
         $anhoi = date("Y", strtotime($this->fechai));
         $result = $this->mysqli->query("SELECT p.TituloProy, p.EntidadFinanciadora, p.AnhoInicioProy, p.AnhoFinProy, 
-        (SELECT COUNT(1) AS Conteo FROM usuario_proyecto u WHERE u.CodigoProy = p.CodigoProy ) AS Conteo, us.NombreU, us.ApellidosU 
-        FROM proyecto p, usuario_proyecto u, usuario us WHERE u.CodigoProy = p.CodigoProy 
-        AND p.AnhoFinProy BETWEEN " .$anhoi. " AND " .$anhof. " AND us.loginU =(SELECT LoginU FROM usuario_proyecto x 
-        WHERE x.TipoParticipacionProy = 'Investigador Principal' AND x.CodigoProy = p.CodigoProy LIMIT 1) AND u.loginU = '". $this->login ."'");
+        (SELECT COUNT(1) AS Conteo FROM usuario_proyecto u WHERE u.CodigoProy = p.CodigoProy ) AS Conteo, 
+        (SELECT CONCAT(us.NombreU, ' ', us.ApellidosU) FROM usuario us, usuario_proyecto x 
+        WHERE x.TipoParticipacionProy = 'Investigador Principal' AND x.CodigoProy = p.CodigoProy AND x.LoginU = us.LoginU LIMIT 1) as NombreU
+        FROM proyecto p, usuario_proyecto u WHERE u.CodigoProy = p.CodigoProy 
+        AND p.AnhoFinProy BETWEEN " .$anhoi. " AND " .$anhof. " AND u.loginU = '". $this->login ."'");
         $log = $this->mysqli->error;
         echo $log;
         if($result){

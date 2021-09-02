@@ -1,0 +1,15 @@
+DATOS PERSONALES
+
+Apellidos: {{ApellidosU}}   | Nombre: {{NombreU}}
+Sexo:  |   Fecha de Nacimiento:  | NIF:
+
+DATOS PROFESIONALES
+
+Organismo: {{UniversidadU}}
+Centro: {{CentroU}}
+Departamento: {{DepartamentoU}}
+Direccion: 
+Situación Laboral: {{TipoContratoU}}
+Categoria Profesional {{TituloAcademicoU}}
+
+--------------------------------------------------------------------------

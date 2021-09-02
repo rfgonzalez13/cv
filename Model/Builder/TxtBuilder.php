@@ -49,7 +49,7 @@ class TxtBuilder implements iBuilder{
     {
         //CodigoProy, TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy, AnhoFinProy, Importe 
         $reemplazo = array('{{TituloProy}}', '{{EntidadFinanciadora}}', '{{AnhoInicioProy}}', 
-        '{{AnhoFinProy}}', '{{NumeroU}}','{{NombreU}}', '{{ApellidosU}}');
+        '{{AnhoFinProy}}', '{{NumeroU}}','{{NombreU}}');
         //Concatenar Título
         $str=file_get_contents(getcwd() . $this->path . 'proyectoscab.txt');
         fwrite($this->archivo, $str);

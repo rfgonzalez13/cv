@@ -1,0 +1,7 @@
+--------------------------------------------------------------------------
+
+Autores/as (por orde de sinaturas): {{AutoresL}}
+Titulo: {{TituloL}}    
+Referencia da revista / libro: {{ISBN}}    
+Clave:      	Volume: {{VolumenL}}     	Páxinas:  inicial: {{PagIniL}}     	final: {{PagFinL}}     		Data: {{FechaPublicacionL}}      
+Editorial (se é un libro): {{EditorialL}}     		Lugar da publicación:  {{PaisEdicionL}}     

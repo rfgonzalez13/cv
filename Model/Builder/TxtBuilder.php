@@ -65,9 +65,41 @@ class TxtBuilder implements iBuilder{
             $fila = $result->fetch_array(MYSQLI_ASSOC);
         } 
     }
-    function publicaciones($result)
+    function publicaciones($libros, $articulos)
     {
-        
+       //Concatenar Título
+       $str=file_get_contents(getcwd() . $this->path . 'publicacionescab.txt');
+       fwrite($this->archivo, $str);
+       if($libros != null){
+            //AutoresL, TituloL, ISBN, PagIniL, PagFinL, VolumenL, EditorialL, FechaPublicacionL, PaisEdicionL    
+            $reemplazo = array('{{AutoresL}}', '{{TituloL}}', '{{ISBN}}', '{{PagIniL}}', '{{PagFinL}}', 
+            '{{VolumenL}}', '{{EditorialL}}', '{{FechaPublicacionL}}', '{{PaisEdicionL}}');
+            $fila = $libros->fetch_array(MYSQLI_ASSOC);
+            while($fila != null){
+                //Leer la plantilla
+                $str=file_get_contents(getcwd() . $this->path . 'libros.txt');
+                //remplazar
+                $str=str_replace($reemplazo, $fila,$str);
+                //Concatenar
+                fwrite($this->archivo, $str);
+                $fila = $libros->fetch_array(MYSQLI_ASSOC);
+            } 
+       }
+       if($articulos != null){
+        //AutoresA, TituloA, TituloR, ISSN, VolumenR, PagIniA, PagFinA, FechaPublicacionR 
+        $reemplazo = array('{{AutoresA}}', '{{TituloA}}', '{{TituloR}}', '{{ISSN}}', '{{VolumenR}}',
+         '{{PagIniA}}', '{{PagFinA}}', '{{FechaPublicacionR}}');
+        $fila = $articulos->fetch_array(MYSQLI_ASSOC);
+        while($fila != null){
+            //Leer la plantilla
+            $str=file_get_contents(getcwd() . $this->path . 'articulos.txt');
+            //remplazar
+            $str=str_replace($reemplazo, $fila,$str);
+            //Concatenar
+            fwrite($this->archivo, $str);
+            $fila = $articulos->fetch_array(MYSQLI_ASSOC);
+        } 
+   }  
     }
     function congresos($result)
     {

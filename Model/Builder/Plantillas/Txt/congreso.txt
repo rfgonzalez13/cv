@@ -1,0 +1,8 @@
+--------------------------------------------------------------------------
+
+Autores/as: {{AutoresC}}     
+Título: {{NombreC}}     
+Tipo de participación: {{TipoParticipacionC}}     
+Congreso: {{AcronimoC}}    
+Publicación:      
+Lugar da actividade: {{LugarC}}      						Data: {{AnhoC}}     

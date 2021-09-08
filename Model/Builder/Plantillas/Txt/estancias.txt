@@ -1,0 +1,6 @@
+-------------------------------------------------------------------------- 
+
+Centro: {{CentroE}}     
+Localidade: {{UniversidadE}}      			País: {{PaisE}}     		Data: {{FechaInicioE}}     		Duración (semanas): {{DuracionE}}      
+Clave: {{TipoE}}     		Tema:      
+

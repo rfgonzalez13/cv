@@ -101,16 +101,103 @@ class TxtBuilder implements iBuilder{
         } 
    }  
     }
-    function congresos($result)
+    function congresos($congresos, $ponencias)
     {
-        
+        //Concatenar Título
+        $str=file_get_contents(getcwd() . $this->path . 'congresocab.txt');
+        fwrite($this->archivo, $str);
+        if($congresos != null){
+            //AutoresC, NombreC, TipoParticipacionC, AcronimoC, AnhoC, LugarC 
+            $reemplazo = array('{{AutoresC}}', '{{NombreC}}', '{{TipoParticipacionC}}', 
+            '{{AcronimoC}}', '{{AnhoC}}','{{LugarC}}');
+            //for each en result
+            $fila = $congresos->fetch_array(MYSQLI_ASSOC);
+            while($fila != null){
+                //Leer la plantilla
+                $str=file_get_contents(getcwd() . $this->path . 'congreso.txt');
+                //remplazar
+                $str=str_replace($reemplazo, $fila,$str);
+                //Concatenar
+                fwrite($this->archivo, $str);
+                $fila = $congresos->fetch_array(MYSQLI_ASSOC);
+            } 
+        }
+        if($ponencias != null){
+            //AutoresP, TituloP, CongresoP, FechaIniCP, LugarCP
+            $reemplazo = array('{{AutoresP}}', '{{TituloP}}', 
+            '{{CongresoP}}', '{{FechaIniCP}}','{{LugarCP}}');
+            //for each en result
+            $fila = $ponencias->fetch_array(MYSQLI_ASSOC);
+            while($fila != null){
+                //Leer la plantilla
+                $str=file_get_contents(getcwd() . $this->path . 'ponencia.txt');
+                //remplazar
+                $str=str_replace($reemplazo, $fila,$str);
+                //Concatenar
+                fwrite($this->archivo, $str);
+                $fila = $ponencias->fetch_array(MYSQLI_ASSOC);
+            } 
+        }
     }
     function estancias($result)
     {
-        
+        //CentroE, UniversidadE, PaisE, FechaInicioE, DuracionE, TipoE
+        $reemplazo = array('{{CentroE}}', '{{UniversidadE}}', '{{PaisE}}', 
+        '{{FechaInicioE}}', '{{DuracionE}}','{{TipoE}}');
+        //Concatenar Título
+        $str=file_get_contents(getcwd() . $this->path . 'estanciacab.txt');
+        fwrite($this->archivo, $str);
+        //for each en result
+        $fila = $result->fetch_array(MYSQLI_ASSOC);
+        while($fila != null){
+            //Cambiar TipoE acorde al formato TXT
+            switch($fila['TipoE']){
+                case 'Doctorado':
+                    $fila['TipoE'] = 'D';
+                    break;
+            
+                case 'Invitado':
+                    $fila['TipoE'] = 'I';
+                    break;
+
+                default:
+                    $fila['TipoE'] = "O (".$fila['TipoE'].")";
+                
+            }
+            //Leer la plantilla
+            $str=file_get_contents(getcwd() . $this->path . 'estancias.txt');
+            //remplazar
+            $str=str_replace($reemplazo, $fila,$str);
+            //Concatenar
+            fwrite($this->archivo, $str);
+            $fila = $result->fetch_array(MYSQLI_ASSOC);
+        } 
     }
+
+    function TAD($result){
+        //Concatenar Título
+        $str=file_get_contents(getcwd() . $this->path . 'tadcab.txt');
+        fwrite($this->archivo, $str);
+        //TituloTAD, AlumnoTAD, FechaLecturaTAD
+        $reemplazo = array('{{TituloTAD}}', '{{AlumnoTAD}}', 
+            '{{FechaLecturaTAD}}');
+        //for each en result
+        $fila = $result->fetch_array(MYSQLI_ASSOC);
+        while($fila != null){
+            //Leer la plantilla
+            $str=file_get_contents(getcwd() . $this->path . 'tad.txt');
+            //remplazar
+            $str=str_replace($reemplazo, $fila,$str);
+            //Concatenar
+            fwrite($this->archivo, $str);
+            $fila = $result->fetch_array(MYSQLI_ASSOC);
+        }
+    }
+
     function getCurriculum()
     {
+        $str=file_get_contents(getcwd() . $this->path . 'fin.txt');
+        fwrite($this->archivo, $str);
         fclose($this->archivo);
 
         session_start(); 

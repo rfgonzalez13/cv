@@ -1,0 +1,7 @@
+--------------------------------------------------------------------------
+
+Título: {{TituloTAD}}     
+Doutorando/a: {{AlumnoTAD}}     
+Universidade:      
+Facultade / escola:      
+Data: {{FechaLecturaTAD}}      

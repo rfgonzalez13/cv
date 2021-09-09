@@ -5,6 +5,6 @@ Soporte para Xunta, Aneca, Cityt y un formato TXT.
 
 Formatos Aneca, Cityt no implementados.
 
-Formato .doc de Xunta corrupto (brain-stucked)
+Formato .doc de Xunta corrupto.
 
 Formato TXT funcionando correctamente.

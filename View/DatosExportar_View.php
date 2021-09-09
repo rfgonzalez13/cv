@@ -43,10 +43,10 @@ function render(){
             </td>
             <td colspan="2">
                <select name="formato" id="formato" class="cajetinesFormularios">
+                  <option value="Txt">Txt</option>
                   <option value="Xunta">Xunta</option>
                   <option value="Aneca">Aneca</option>
                   <option value="Cityt">Cityt</option>
-                  <option value="Txt">Txt</option>
                </select>
             </td>
          </tr>

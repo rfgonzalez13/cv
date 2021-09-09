@@ -19,9 +19,15 @@ function render(){
 		
 		<td>Curriculum Generado<br>
 		<br>
-		<a href="./download.php">Descargar curriculum</a>
-		<br></td>
-        </tr>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="./download.php" class="enlace_home"><img src="./View/img/save.png" width="15" height="15">&nbsp;Descargar aquí  </a><br>
+		<div align="center">
+		<a class="enlace_seccion" href="./index.php?controller=DatosExportar"><img src="./View/img/back.png" width="30" height="30"></a>
+		<BR>
+            <BR>
+        </div>
+		</td>
+        
+		</tr>
       </table>
 
 

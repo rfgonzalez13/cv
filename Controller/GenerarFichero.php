@@ -29,8 +29,9 @@ class GenerarFichero
                     $builder = new TxtBuilder();
                     break;
                 case "Xunta":
-                    new Mensaje("Formato " . $formato . " no implementado aún", './index.php?controller=DatosExportar');
-                    //$builder = new XuntaBuilder();
+                    //new Mensaje("Formato " . $formato . " no implementado aún", './index.php?controller=DatosExportar');
+                    $builder = new XuntaBuilder();
+                    break;
                 break;
                 case "Aneca":
                     new Mensaje("Formato " . $formato . " no implementado aún", './index.php?controller=DatosExportar');
